@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museum Exhibit Monitoring</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Museum Exhibit Monitoring System</h1>
+
+    <div class="container">
+        <!-- Live camera feed -->
+        <div class="camera-feed">
+            <h2>Camera Feed</h2>
+            <img src="{{ url_for('video_feed') }}" id="camera-feed" width="640" height="480">
+        </div>
+
+        <!-- Laser system controls -->
+        <div class="laser-system">
+            <h2>Laser Module System</h2>
+            <p>Status: <span id="laser-status">Checking...</span></p>
+            <button onclick="turnLaserOn()">Activate Laser</button>
+            <button onclick="turnLaserOff()">Deactivate Laser</button>
+        </div>
+    </div>
+
+    <script>
+        // Check laser status
+        function checkLaserStatus() {
+            fetch('/laser_status')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('laser-status').textContent = data.status ? 'Active' : 'Inactive';
+                });
+        }
+
+        // Turn laser on
+        function turnLaserOn() {
+            fetch('/turn_laser_on', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.status);
+                    checkLaserStatus();
+                });
+        }
+
+        // Turn laser off
+        function turnLaserOff() {
+            fetch('/turn_laser_off', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.status);
+                    checkLaserStatus();
+                });
+        }
+
+        // Initial check of laser status
+        checkLaserStatus();
+    </script>
+</body>
+</html>
