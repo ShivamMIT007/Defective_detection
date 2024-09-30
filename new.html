@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Defective Exhibit Identification System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .dashboard {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .exhibit {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .status {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .status.working {
+            color: green;
+        }
+
+        .status.faulty {
+            color: red;
+        }
+
+        .exhibit-details {
+            font-size: 14px;
+            color: #666;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Automated Defective Exhibit Identification System</h1>
+        <p>Real-Time Monitoring of Science Museum Exhibits</p>
+    </header>
+
+    <div class="container">
+        <h2>Exhibit Status Dashboard</h2>
+        <div class="dashboard" id="dashboard">
+            <!-- Exhibit Status Cards Will Be Injected Here by JavaScript -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Science Museum Automated System</p>
+    </footer>
+
+    <script>
+        // Sample exhibit data (in a real system, this would come from the AI-powered backend)
+        const exhibits = [
+            {
+                name: "Pendulum Experiment",
+                status: "working",
+                lastChecked: "2024-09-29 10:15 AM",
+                location: "Physics Gallery",
+                goldenParameters: "Motion Sensor - Active, Balance - Stable"
+            },
+            {
+                name: "Magnetic Field Demonstrator",
+                status: "faulty",
+                lastChecked: "2024-09-29 10:00 AM",
+                location: "Electromagnetism Gallery",
+                goldenParameters: "Magnetism Sensor - Inactive, Current Flow - Disrupted"
+            },
+            {
+                name: "Water Cycle Display",
+                status: "working",
+                lastChecked: "2024-09-29 09:45 AM",
+                location: "Earth Science Gallery",
+                goldenParameters: "Water Flow - Normal, Temperature - Stable"
+            }
+        ];
+
+        // Function to render exhibit status cards on the page
+        function renderExhibitStatus() {
+            const dashboard = document.getElementById("dashboard");
+
+            exhibits.forEach(exhibit => {
+                const exhibitCard = document.createElement('div');
+                exhibitCard.classList.add('exhibit');
+
+                exhibitCard.innerHTML = `
+                    <h3>${exhibit.name}</h3>
+                    <p class="status ${exhibit.status}">${exhibit.status === 'working' ? 'Operational' : 'Faulty'}</p>
+                    <div class="exhibit-details">
+                        <p><strong>Last Checked:</strong> ${exhibit.lastChecked}</p>
+                        <p><strong>Location:</strong> ${exhibit.location}</p>
+                        <p><strong>Golden Parameters:</strong> ${exhibit.goldenParameters}</p>
+                    </div>
+                `;
+
+                dashboard.appendChild(exhibitCard);
+            });
+        }
+
+        // Call the function to render the dashboard when the page loads
+        window.onload = renderExhibitStatus;
+    </script>
+</body>
+</html>
