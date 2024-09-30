@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Exhibit Monitoring</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #ff6f61;
+    padding: 40px 0;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    font-size: 3em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+/* Sections */
+.section {
+    margin: 30px 0;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 2.2em;
+    font-weight: 600;
+    color: #0072ff;
+    margin-bottom: 20px;
+}
+
+/* Camera Feed Section */
+.camera-section .camera-feed img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Laser Module Section */
+.laser-section .laser-status {
+    margin-bottom: 20px;
+}
+
+.laser-section .laser-status span {
+    font-weight: 600;
+    color: #28a745;
+    font-size: 1.2em;
+}
+
+.laser-controls {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #ff6f61;
+    box-shadow: 0 4px 8px rgba(255, 111, 97, 0.5);
+}
+
+.btn-primary:hover {
+    background-color: #ff5045;
+}
+
+.btn-secondary {
+    background-color: #28a745;
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.5);
+}
+
+.btn-secondary:hover {
+    background-color: #218838;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 1em;
+}
+
+footer p {
+    margin: 0;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Interactive Exhibit Monitoring System</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Camera Section -->
+            <section class="section camera-section">
+                <h2>🎥 Live Camera Feed</h2>
+                <div class="camera-feed">
+                    <img src="https://via.placeholder.com/640x480" alt="Camera Feed" id="camera-feed">
+                </div>
+            </section>
+
+            <!-- Laser Control Section -->
+            <section class="section laser-section">
+                <h2>💡 Laser Module System</h2>
+                <div class="laser-status">
+                    <p>Status: <span id="laser-status">Checking...</span></p>
+                </div>
+                <div class="laser-controls">
+                    <button id="laser-on" class="btn btn-primary">Activate Laser</button>
+                    <button id="laser-off" class="btn btn-secondary">Deactivate Laser</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Interactive Exhibit Monitoring. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
